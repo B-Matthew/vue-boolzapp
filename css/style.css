@@ -1,0 +1,68 @@
+/* REGOLE GENERALI */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(180deg, #009688 13%, #D8DBD5 13%);
+}
+
+.flex-generale {
+  width: 70%;
+  margin: 2.5vh auto;
+  background-color: white;
+  height: 95vh;
+  box-shadow: 0px 0px 4px #888;
+  display: flex;
+}
+/* SideBar left */
+.sidebar {
+  width: 30%;
+  height: 100%;
+}
+
+.top-menu {
+  height: 7%;
+  width: 100%;
+  background-color: #EDEDED;
+}
+
+/* Border "header" */
+.border {
+  border-left: 1px solid lightgrey;
+}
+
+.notifications {
+  background-color: #9DE1FE;
+  height: 12%;
+}
+
+.searchBar {
+  background-color: #F6F6F6;
+  height: 7%;
+}
+
+.groupChat {
+  background-color: white;
+}
+
+#user-img {
+  border-radius: 50%;
+  height: 40px;
+  width: auto;
+}
+/* right menu */
+
+.right-menu {
+  width: 70%;
+  height: 100%;
+}
+
+.chat-section {
+  background-image: url("../img/sfondo-chat.png");
+  background-size: contain;
+  height: 86%;
+}
