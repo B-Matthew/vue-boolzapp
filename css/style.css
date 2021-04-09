@@ -12,6 +12,24 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+li {
+  list-style-type: none;
+  border-bottom: 1px solid lightgrey;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+}
+
+li:hover {
+  background-color: #EDEDED;
+}
+
+li p {
+  padding: 0 20px;
+}
+
+
 a {
   text-decoration: none;
   color: black;
@@ -33,6 +51,9 @@ a:hover {
   box-shadow: 0px 0px 4px #888;
   display: flex;
 }
+
+
+
 /* SideBar left */
 .sidebar {
   width: 30%;
@@ -104,11 +125,12 @@ a:hover {
   font-size: 22px;
 }
 
-#user-img {
+.user-img,img{
   border-radius: 50%;
   height: 40px;
-  width: auto;
+  width: 40px;
 }
+
 
 #bell {
   color: #9DE1FE;

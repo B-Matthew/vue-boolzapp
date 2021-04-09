@@ -19,7 +19,7 @@
         <div class="bar-menu">
           <div class="icons-user padding">
             <div class="img-user">
-              <img id="user-img" src="img/pp.jpg" alt="">
+              <img class="user-img" src="img/pp.jpg" alt="">
             </div>
             <div class="status-icons">
               <a href="#"><i id="circle" class="fas fa-circle-notch"></i></a>
@@ -45,7 +45,17 @@
       </div>
 
       <div class="groupChat">
-
+        <ul>
+          <li class="padding" v-for="(elem,index) in contacts">
+            <div class="">
+              <img :src="elem.avatar" alt="">
+            </div>
+            <div class="">
+              <p>{{elem.name}}</p>
+              
+            </div>
+          </li>
+        </ul>
       </div>
 
     </div>
@@ -59,16 +69,12 @@
       </div>
       <div class="bar-menu border">
         <div class="footer-section">
-          <i class="far fa-laugh"></i>
-          <i class="fas fa-paperclip"></i>
-          <input id="msg-input"type="text" name="" value="" placeholder="Scrivi un messaggio">
-          <i class="fas fa-microphone"></i>
+          <a href="#"><i class="far fa-laugh"></i></a>
+          <a href="#"><i class="fas fa-paperclip"></i></a>
+          <input id="msg-input" type="text" name="" value="" placeholder="Scrivi un messaggio">
+          <a href="#"><i class="fas fa-microphone"></i></a>
         </div>
-
       </div>
-
-
-
 
     </div>
   </div>
