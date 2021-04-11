@@ -12,23 +12,22 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-li {
+.groupChat li {
   list-style-type: none;
   border-bottom: 1px solid lightgrey;
   height: 70px;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  justify-content: space-between;
   transition: 0.2s;
+
 }
 
-li:hover {
+
+.groupChat li:hover {
   background-color: #EDEDED;
 }
-
-li p {
-  padding: 0 20px;
-}
-
 
 a {
   text-decoration: none;
@@ -51,8 +50,6 @@ a:hover {
   box-shadow: 0px 0px 4px #888;
   display: flex;
 }
-
-
 
 /* SideBar left */
 .sidebar {
@@ -78,7 +75,7 @@ a:hover {
   height:  100%;
 }
 
-.status-icons i,.footer-section i {
+.status-icons i,.footer-section i, .font-title i {
   padding: 0 15px;
   font-size: 20px;
   color: grey;
@@ -119,6 +116,19 @@ a:hover {
 
 .groupChat {
   background-color: white;
+  overflow: auto;
+  max-height: 76%;
+}
+
+
+
+.last-info  {
+  font-size: 13px;
+  color: grey;
+}
+
+.info {
+  flex-grow: 1;
 }
 
 #circle {
@@ -147,6 +157,29 @@ a:hover {
 }
 /* right menu */
 
+.flex-contact {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.font-title {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.title-contact {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.title-contact p{
+  margin-left:  30px;
+  font-size: 18px;
+}
+
 .right-menu {
   width: 70%;
   height: 100%;
@@ -156,6 +189,43 @@ a:hover {
   background-image: url("../img/sfondo-chat.png");
   background-size: contain;
   height: 86%;
+  padding: 20px 0;
+  overflow: auto;
+}
+
+.chatting {
+  list-style-type: none;
+  margin: 20px 20px;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 1px 2px #888;
+}
+
+.sent {
+  background-color: #DCF8C6;
+  float: right;
+  clear: both;
+}
+
+.received {
+  background-color: white;
+  clear: both;
+  float: left;
+  max-width: 50%;
+}
+
+.text-msg {
+  font-size: 15px;
+}
+
+.hours-msg {
+  padding-left: 40px;
+  font-size: 11px;
+  color: grey;
+  position: relative;
+  top: 8px;
 }
 
 .footer-section {
@@ -168,7 +238,7 @@ a:hover {
   width: 85%;
   height: 70%;
   border-radius: 20px;
-  border:none;
+  border: none;
   color: Grey;
   font-size: 15px;
   outline: none;

@@ -46,32 +46,54 @@
 
       <div class="groupChat">
         <ul>
-          <li class="padding" v-for="(elem,index) in contacts">
+          <li class="padding" v-for="(elem, index) in contacts" @click="indexContact(index)">
             <div class="">
               <img :src="elem.avatar" alt="">
             </div>
-            <div class="">
-              <p>{{elem.name}}</p>
-              
+            <div class="info">
+              <p class="padding">{{elem.name}}</p>
+              <p class="last-info padding">{{elem.messages[elem.messages.length - 1].text}}</p>
             </div>
+            <p class="last-info padding">{{elem.messages[elem.messages.length - 1].hours}}</p>
           </li>
+
         </ul>
       </div>
 
     </div>
 
     <div class="right-menu">
-      <div class="bar-menu border">
-
+      <div class="bar-menu border flex-contact">
+        <div class="title-contact">
+          <img :src="contacts[indice].avatar" alt="">
+          <p>{{contacts[indice].name}}</p>
+        </div>
+        <div class="font-title">
+          <a href="#"><i class="fas fa-search"></i></a>
+          <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+        </div>
       </div>
+
       <div class="chat-section">
+        <ul>
+          <li :class="elem.status" v-for="(elem,index) in contacts[indice].messages" class="chatting">
+            <div class="text-msg">
+              {{elem.text}}
+            </div>
+            <div class="hours-msg">
+              {{elem.hours}}
+            </div>
 
+
+          </li>
+        </ul>
       </div>
+
       <div class="bar-menu border">
         <div class="footer-section">
-          <a href="#"><i class="far fa-laugh"></i></a>
+          <a href="#"><i  class="far fa-laugh"></i></a>
           <a href="#"><i class="fas fa-paperclip"></i></a>
-          <input id="msg-input" type="text" name="" value="" placeholder="Scrivi un messaggio">
+          <input @keyup.enter="addMsg" id="msg-input" type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="val">
           <a href="#"><i class="fas fa-microphone"></i></a>
         </div>
       </div>
