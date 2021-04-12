@@ -12,23 +12,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.groupChat li {
-  list-style-type: none;
-  border-bottom: 1px solid lightgrey;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  justify-content: space-between;
-  transition: 0.2s;
-
-}
-
-
-.groupChat li:hover {
-  background-color: #EDEDED;
-}
-
 a {
   text-decoration: none;
   color: black;
@@ -67,7 +50,7 @@ a:hover {
 .border {
   border-left: 1px solid lightgrey;
 }
-
+/* SECTION USER */
 .icons-user {
   display: flex;
   align-items: center;
@@ -81,6 +64,10 @@ a:hover {
   color: grey;
 }
 
+#circle {
+  font-size: 22px;
+}
+/* SECTION NOTIFICATIONS */
 .notifications {
   background-color: #9DE1FE;
   height: 11%;
@@ -88,6 +75,20 @@ a:hover {
   align-items: center;
 }
 
+#bell {
+  color: #9DE1FE;
+  background-color: white;
+  padding: 13px 11px;
+  border-radius: 50%;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.text-notifications >a{
+  font-size: 13px;
+  margin-right: 5px;
+}
+/* SECTION SEARCH BAR */
 .searchBar {
   background-color: #F6F6F6;
   height: 6%;
@@ -113,14 +114,27 @@ a:hover {
   outline: none;
   padding: 0 40px
 }
-
+/* SECTIO CONTACTS */
 .groupChat {
   background-color: white;
   overflow: auto;
   max-height: 76%;
 }
 
+.groupChat li {
+  list-style-type: none;
+  border-bottom: 1px solid lightgrey;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  justify-content: space-between;
+  transition: 0.2s;
+}
 
+.groupChat li:hover {
+  background-color: #EDEDED;
+}
 
 .last-info  {
   font-size: 13px;
@@ -131,10 +145,6 @@ a:hover {
   flex-grow: 1;
 }
 
-#circle {
-  font-size: 22px;
-}
-
 .user-img,img{
   border-radius: 50%;
   height: 40px;
@@ -142,18 +152,37 @@ a:hover {
 }
 
 
-#bell {
-  color: #9DE1FE;
-  background-color: white;
-  padding: 13px 11px;
-  border-radius: 50%;
-  font-size: 18px;
-  margin-right: 20px;
+/* MENU COVER */
+
+.coverChat {
+  text-align: center;
+  width:60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.text-notifications >a{
-  font-size: 13px;
-  margin-right: 5px;
+h1 {
+  font-weight: 100;
+}
+
+.coverChat a {
+  color: #4ACD7C;
+}
+
+.coverChat p{
+  font-size: 15px;
+  color: grey;
+  margin: 30px 0;
+}
+
+
+.img-cover {
+  height: 45%;
+  width: 41%;
+  margin: 30px 0;
 }
 /* right menu */
 
@@ -180,6 +209,8 @@ a:hover {
   font-size: 18px;
 }
 
+
+/* CHAT SECTION */
 .right-menu {
   width: 70%;
   height: 100%;
@@ -228,6 +259,7 @@ a:hover {
   top: 8px;
 }
 
+/* "FOOTER" SECTION */
 .footer-section {
   display: flex;
   align-items: center;

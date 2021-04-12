@@ -175,15 +175,26 @@ function initVue() {
           ],
         },
       ],
-      indice: 0,
+      current: 0,
       val: "",
+      showChat: false,
+      search:""
     },
 
     methods: {
-      indexContact: function(index) {
-        this.indice = index;
+      // FUNZIONE PER PRENDERE L'INDICE DEL CONTATTO CLICCATO IN CONTACTS
+      contact: function(elem) {
+        this.current = elem;
+        this.showChat = true;
       },
+      // FUNZIONE PER FILTRARE NELLA SEARCHBAR
+      filteredList: function() {
+      return this.contacts.filter(item => {
+        return item.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+    },
 
+      // FUNZIONE PER MANDARE MESSAGGI + SETTIMEOUT
       addMsg: function() {
         const msgSent = {
           date: '28/03/2020',
@@ -192,10 +203,10 @@ function initVue() {
           status: 'sent'
         }
         this.val="";
-        this.contacts[this.indice].messages.push(msgSent);
+        this.contacts[this.current].messages.push(msgSent);
         setTimeout(this.answerInt,1000);
       },
-
+      // FUNZIONE PER RICEVERE RISPOSTA
       answerInt: function () {
          const answer = {
            date: '28/03/2020',
@@ -203,18 +214,12 @@ function initVue() {
            text: "Ok",
            status: 'received'
          }
-         this.contacts[this.indice].messages.push(answer);
+         this.contacts[this.current].messages.push(answer);
 
       }
     }
   });
 }
-
-
-
-
-
-
 
 function init() {
 

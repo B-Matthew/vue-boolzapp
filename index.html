@@ -15,7 +15,9 @@
   </head>
   <body>
     <div class="flex-generale">
+      <!-- SIDEBAR LEFT SIDE -->
       <div class="sidebar">
+        <!-- SECTION USER -->
         <div class="bar-menu">
           <div class="icons-user padding">
             <div class="img-user">
@@ -28,78 +30,79 @@
             </div>
           </div>
         </div>
-
+        <!-- SECTION NOTIFICATIONS -->
         <div class="notifications padding">
           <div class="bell-icon">
           <a href="#"><i id="bell" class="fas fa-bell-slash"></i></a>
+          </div>
+          <div class="text-notifications">
+            <p><a href="#">Ricevi notifiche di nuovi messaggi</a></p>
+            <a href="#">Attiva notifiche desktop <i class="fas fa-chevron-right"></i></a>
+          </div>
         </div>
-        <div class="text-notifications">
-          <p><a href="#">Ricevi notifiche di nuovi messaggi</a></p>
-          <a href="#">Attiva notifiche desktop <i class="fas fa-chevron-right"></i></a>
+      <!-- SECTION SEARCHBAR -->
+        <div class="searchBar padding">
+          <i id="lent" class="fas fa-search"></i>
+          <input id="inputSearch" type="text" name="" value="" placeholder="Cerca o inizia una nuova chat" @keyUp="filteredList" v-model="search">
+        </div>
+      <!-- SECTION CONTACTS -->
+        <div class="groupChat">
+          <ul>
+            <li class="padding" v-for="(elem) in filteredList()" @click="contact(elem)">
+              <div class="">
+                <img :src="elem.avatar" alt="">
+              </div>
+              <div class="info">
+                <p class="padding">{{elem.name}}</p>
+                <p class="last-info padding">{{elem.messages[elem.messages.length - 1].text}}</p>
+              </div>
+              <p class="last-info padding">{{elem.messages[elem.messages.length - 1].hours}}</p>
+            </li>
+          </ul>
         </div>
       </div>
+    <!-- RIGHT SIDE MENU -->
+      <div class="coverChat" v-show ="!showChat">
+        <img class="img-cover" src="img/123.png" alt="">
+        <h1>Mantieni il telefono connesso</h1>
+        <p>WhatsApp si collega al tuo telefono per sincronizzare i messaggi. Per <br> ridurre l'utilizzo dei dati, collega il tuo telefono al Wi-fi.</p>
 
-      <div class="searchBar padding">
-        <i id="lent" class="fas fa-search"></i>
-        <input id="inputSearch" type="text" name="" value="" placeholder="Cerca o inizia una nuova chat">
+        <p><i class="fas fa-laptop"></i>  WhatsApp Web è disponibile per Windows. <a href="#"> Scarica qui.</a></p>
       </div>
-
-      <div class="groupChat">
-        <ul>
-          <li class="padding" v-for="(elem, index) in contacts" @click="indexContact(index)">
-            <div class="">
-              <img :src="elem.avatar" alt="">
-            </div>
-            <div class="info">
-              <p class="padding">{{elem.name}}</p>
-              <p class="last-info padding">{{elem.messages[elem.messages.length - 1].text}}</p>
-            </div>
-            <p class="last-info padding">{{elem.messages[elem.messages.length - 1].hours}}</p>
-          </li>
-
-        </ul>
+      <div class="right-menu" v-show= "showChat">
+        <div class="bar-menu border flex-contact">
+          <div class="title-contact">
+            <img :src="current.avatar" alt="">
+            <p>{{current.name}}</p>
+          </div>
+          <div class="font-title">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+          </div>
+        </div>
+        <!-- CHAT SECTION -->
+        <div class="chat-section">
+          <ul>
+            <li :class="elem.status" v-for="(elem,index) in current.messages" class="chatting">
+              <div class="text-msg">
+                {{elem.text}}
+              </div>
+              <div class="hours-msg">
+                {{elem.hours}}
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- INPUT TEXT SECTION -->
+        <div class="bar-menu border">
+          <div class="footer-section">
+            <a href="#"><i  class="far fa-laugh"></i></a>
+            <a href="#"><i class="fas fa-paperclip"></i></a>
+            <input @keyup.enter="addMsg" id="msg-input" type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="val">
+            <a href="#"><i class="fas fa-microphone"></i></a>
+          </div>
+        </div>
       </div>
-
     </div>
-
-    <div class="right-menu">
-      <div class="bar-menu border flex-contact">
-        <div class="title-contact">
-          <img :src="contacts[indice].avatar" alt="">
-          <p>{{contacts[indice].name}}</p>
-        </div>
-        <div class="font-title">
-          <a href="#"><i class="fas fa-search"></i></a>
-          <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-        </div>
-      </div>
-
-      <div class="chat-section">
-        <ul>
-          <li :class="elem.status" v-for="(elem,index) in contacts[indice].messages" class="chatting">
-            <div class="text-msg">
-              {{elem.text}}
-            </div>
-            <div class="hours-msg">
-              {{elem.hours}}
-            </div>
-
-
-          </li>
-        </ul>
-      </div>
-
-      <div class="bar-menu border">
-        <div class="footer-section">
-          <a href="#"><i  class="far fa-laugh"></i></a>
-          <a href="#"><i class="fas fa-paperclip"></i></a>
-          <input @keyup.enter="addMsg" id="msg-input" type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="val">
-          <a href="#"><i class="fas fa-microphone"></i></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</body>
+  </body>
 </html>
