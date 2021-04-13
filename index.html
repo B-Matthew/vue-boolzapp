@@ -52,16 +52,18 @@
               <div class="">
                 <img :src="elem.avatar" alt="">
               </div>
-              <div class="info">
+              <div class="info" v-if="elem.messages.length > 0">
                 <p class="padding">{{elem.name}}</p>
                 <p class="last-info padding">{{elem.messages[elem.messages.length - 1].text}}</p>
               </div>
-              <p class="last-info padding">{{elem.messages[elem.messages.length - 1].hours}}</p>
+              <div v-if="elem.messages.length > 0" class="">
+                <p class="last-info padding">{{elem.messages[elem.messages.length - 1].hours}}</p>
+              </div>
             </li>
           </ul>
         </div>
       </div>
-    <!-- RIGHT SIDE MENU -->
+      <!-- RIGHT SIDE MENU -->
       <div class="coverChat" v-show ="!showChat">
         <img class="img-cover" src="img/123.png" alt="">
         <h1>Mantieni il telefono connesso</h1>
@@ -84,6 +86,10 @@
         <div class="chat-section">
           <ul>
             <li :class="elem.status" v-for="(elem,index) in current.messages" class="chatting">
+              <div class="drop-delete">
+                <p>Message info</p>
+                <p @click="deleteMsg(index)">Delete</p>
+              </div>
               <div class="text-msg">
                 {{elem.text}}
               </div>
@@ -105,4 +111,4 @@
       </div>
     </div>
   </body>
-</html>
+  </html>

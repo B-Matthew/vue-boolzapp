@@ -24,7 +24,7 @@ function initVue() {
             },
             {
               date: '10/01/2020',
-              hours: ' 16:15',
+              hours: '16:15',
               text: 'Guarda che non puoi andare in giro senza!! :D',
               status: 'sent'
             },
@@ -55,13 +55,13 @@ function initVue() {
             },
             {
               date: '10/01/2020',
-              hours: ' 16:15',
+              hours: '16:15',
               text: 'Arrivo arrivo!',
               status: 'received'
             },
             {
             date: '10/01/2020',
-            hours: ' 16:15',
+            hours: '16:15',
             text: 'Ho fatto pausa per comprare della roba per dopo! :)',
             status: 'received'
           }
@@ -86,7 +86,7 @@ function initVue() {
             },
             {
               date: '10/01/2020',
-              hours: ' 16:15',
+              hours: '16:15',
               text: 'Scusa, ho sempre questo singhiozzo che mi parte a caso... ',
               status: 'received'
             }
@@ -111,7 +111,7 @@ function initVue() {
             },
             {
               date: '10/01/2020',
-              hours: ' 16:15',
+              hours: '16:15',
               text: 'ops',
               status: 'sent'
             }
@@ -125,19 +125,19 @@ function initVue() {
           messages: [
             {
               date: '20/03/2020',
-              hours: ' 16:30',
+              hours: '16:30',
               text: 'Hai preso tutto per stasera? Dai che dobbiamo preparare',
               status: 'sent'
             },
             {
               date: '20/03/2020',
-              hours: ' 16:30',
+              hours: '16:30',
               text: "Sisi ho trovato le gelatineeee.. C'è cioccolato e menta piperita. E c'è anche spinaci, fegato e trippa. George giura che ne ha trovata una al gusto di caccole!",
               status: 'received'
             },
             {
               date: '20/03/2020',
-              hours: ' 16:35',
+              hours: '16:35',
               text: 'Bleah, quella roba piace solo a te',
               status: 'sent'
             }
@@ -150,7 +150,7 @@ function initVue() {
           messages: [
             {
               date: '28/03/2020',
-              hours: ' 10:10',
+              hours: '10:10',
               text: 'MONELLA!',
               status: 'received'
             },
@@ -168,7 +168,7 @@ function initVue() {
             },
             {
               date: '28/03/2020',
-              hours: ' 16:18',
+              hours: '16:18',
               text: 'MONELLO!',
               status: 'received'
             }
@@ -182,7 +182,7 @@ function initVue() {
     },
 
     methods: {
-      // FUNZIONE PER PRENDERE L'INDICE DEL CONTATTO CLICCATO IN CONTACTS
+      // FUNZIONE PER PRENDERE L'ELEMENTO DEL CONTATTO CLICCATO IN CONTACTS
       contact: function(elem) {
         this.current = elem;
         this.showChat = true;
@@ -194,35 +194,42 @@ function initVue() {
       });
     },
 
-      // FUNZIONE PER MANDARE MESSAGGI + SETTIMEOUT
+      // FUNZIONE PER MANDARE MESSAGGI + SET TIMEOUT
       addMsg: function() {
+        const now = new Date();
+        const dateNow = now.getHours()+":"+now.getMinutes();
         const msgSent = {
           date: '28/03/2020',
-          hours: ' 16:18',
+          hours: dateNow,
           text: this.val,
           status: 'sent'
         }
         this.val="";
-        this.contacts[this.current].messages.push(msgSent);
+        this.current.messages.push(msgSent);
         setTimeout(this.answerInt,1000);
       },
       // FUNZIONE PER RICEVERE RISPOSTA
       answerInt: function () {
+        const now = new Date();
+        const dateNow = now.getHours()+":"+now.getMinutes();
          const answer = {
            date: '28/03/2020',
-           hours: ' 16:18',
+           hours: dateNow,
            text: "Ok",
            status: 'received'
          }
-         this.contacts[this.current].messages.push(answer);
+         this.current.messages.push(answer);
+       },
+       // FUNZIONE PER CANCELLARE IL MESSAGGIO SELEZIONATO
+       deleteMsg: function(indice) {
+          this.current.messages.splice(indice,1)
+       }
+     }
+   });
+ }
 
-      }
-    }
-  });
-}
 
 function init() {
-
   initVue();
 }
 
