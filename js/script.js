@@ -194,32 +194,52 @@ function initVue() {
       });
     },
 
+       currentData: function() {
+         const now = new Date();
+         const minutes = now.getMinutes();
+         let dateNow = now.getHours() + ":" + minutes;
+         if (minutes < 10) {
+
+            dateNow = now.getHours()+":"+"0"+ minutes;
+         }
+
+         return dateNow;
+       },
+
+
+
+
       // FUNZIONE PER MANDARE MESSAGGI + SET TIMEOUT
       addMsg: function() {
-        const now = new Date();
-        const dateNow = now.getHours()+":"+now.getMinutes();
+
         const msgSent = {
           date: '28/03/2020',
-          hours: dateNow,
+          hours: this.currentData(),
           text: this.val,
           status: 'sent'
         }
         this.val="";
         this.current.messages.push(msgSent);
-        setTimeout(this.answerInt,1000);
+        this.answerInt();
+        // this.setTimeout(this.answerInt,1000);
       },
+
+
       // FUNZIONE PER RICEVERE RISPOSTA
       answerInt: function () {
-        const now = new Date();
-        const dateNow = now.getHours()+":"+now.getMinutes();
+        const currentmsg = this.current.messages;
+        setTimeout(() => {
+
          const answer = {
            date: '28/03/2020',
-           hours: dateNow,
+           hours: this.currentData(),
            text: "Ok",
            status: 'received'
          }
-         this.current.messages.push(answer);
+         currentmsg.push(answer);
+       },1000);
        },
+
        // FUNZIONE PER CANCELLARE IL MESSAGGIO SELEZIONATO
        deleteMsg: function(indice) {
           this.current.messages.splice(indice,1)
@@ -228,9 +248,8 @@ function initVue() {
    });
  }
 
+ function init() {
+   initVue();
+ }
 
-function init() {
-  initVue();
-}
-
-$(init);
+ $(init);
