@@ -193,7 +193,7 @@ function initVue() {
         return item.name.toLowerCase().includes(this.search.toLowerCase());
       });
     },
-
+      // FUNZIONE PER OTTENERE L'ORARIO REALE
        currentData: function() {
          const now = new Date();
          const minutes = now.getMinutes();
@@ -202,47 +202,39 @@ function initVue() {
 
             dateNow = now.getHours()+":"+"0"+ minutes;
          }
-
          return dateNow;
        },
+       // FUNZIONE PER MANDARE MESSAGGI + SET TIMEOUT
+       addMsg: function() {
 
-
-
-
-      // FUNZIONE PER MANDARE MESSAGGI + SET TIMEOUT
-      addMsg: function() {
-
-        const msgSent = {
-          date: '28/03/2020',
-          hours: this.currentData(),
-          text: this.val,
-          status: 'sent'
-        }
-        this.val="";
-        this.current.messages.push(msgSent);
-        this.answerInt();
-        // this.setTimeout(this.answerInt,1000);
-      },
-
-
-      // FUNZIONE PER RICEVERE RISPOSTA
-      answerInt: function () {
-        const currentmsg = this.current.messages;
-        setTimeout(() => {
-
-         const answer = {
+         const msgSent = {
            date: '28/03/2020',
            hours: this.currentData(),
-           text: "Ok",
-           status: 'received'
+           text: this.val,
+           status: 'sent'
          }
-         currentmsg.push(answer);
-       },1000);
+         this.val="";
+         this.current.messages.push(msgSent);
+         this.answerInt();
+         // this.setTimeout(this.answerInt,1000);
        },
+       // FUNZIONE PER RICEVERE RISPOSTA
+       answerInt: function () {
+         const currentmsg = this.current.messages;
+         setTimeout(() => {
 
+           const answer = {
+             date: '28/03/2020',
+             hours: this.currentData(),
+             text: "Ok",
+             status: 'received'
+           }
+           currentmsg.push(answer);
+         },1000);
+       },
        // FUNZIONE PER CANCELLARE IL MESSAGGIO SELEZIONATO
        deleteMsg: function(indice) {
-          this.current.messages.splice(indice,1)
+         this.current.messages.splice(indice,1)
        }
      }
    });
