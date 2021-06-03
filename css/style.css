@@ -217,12 +217,23 @@ h1 {
 }
 
 .chat-section {
-  background-image: url("../img/sfondo-chat.png");
-  background-size: contain;
   height: 86%;
   padding: 20px 0;
   overflow: auto;
 }
+
+.chat-section-night {
+  background-image: url("../img/darkMode.jpg");
+  background-size: cover;
+}
+
+
+.chat-section-sun {
+  background-image: url("../img/sfondo-chat.png");
+  background-size: contain;
+}
+
+
 
 .chatting {
   list-style-type: none;
@@ -246,12 +257,12 @@ h1 {
   right: 0px;
   top:80%;
   width: 160px;
-  z-index: 50;
+  z-index: 900;
   padding: 15px 25px;
   display: none;
 }
 
-.chatting:hover .drop-delete{
+ .deleteblock{
   display: block;
 }
 
@@ -297,4 +308,14 @@ h1 {
   font-size: 15px;
   outline: none;
   padding: 0 40px
+}
+
+/* VERSIONE NOTTURNA */
+
+.night {
+  background-color: black;
+}
+
+.textwhite {
+  color: white;
 }

@@ -14,25 +14,29 @@ function initVue() {
               date: '10/01/2020',
               hours: '15:30',
               text: 'Hai preso la mascherina?',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '15:50',
               text: 'No, non mi serve!',
-              status: 'received'
+              status: 'received',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '16:15',
               text: 'Guarda che non puoi andare in giro senza!! :D',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '15:50',
               text: 'Ah no?? Non posso?',
-              status: 'received'
+              status: 'received',
+              drop: false
             },
           ],
         },
@@ -45,25 +49,29 @@ function initVue() {
               date: '10/01/2020',
               hours: '15:30',
               text: 'Dove sei??',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '15:50',
               text: 'Dovevamo trovarci qui alle 9.00 in punto',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '16:15',
               text: 'Arrivo arrivo!',
-              status: 'received'
+              status: 'received',
+              drop: false
             },
             {
             date: '10/01/2020',
             hours: '16:15',
             text: 'Ho fatto pausa per comprare della roba per dopo! :)',
-            status: 'received'
+            status: 'received',
+            drop: false
           }
           ],
         },
@@ -76,19 +84,22 @@ function initVue() {
               date: '10/01/2020',
               hours: '15:30',
               text: 'Aigloah!',
-              status: 'received'
+              status: 'received',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '15:50',
               text: '??? Tutto bene?',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '16:15',
               text: 'Scusa, ho sempre questo singhiozzo che mi parte a caso... ',
-              status: 'received'
+              status: 'received',
+              drop: false
             }
           ],
         },
@@ -101,19 +112,22 @@ function initVue() {
               date: '10/01/2020',
               hours: '15:30',
               text: 'Salve Maestro, o letto il suo libro!',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '15:50',
               text: 'O LETTO??? CAPRA,CAPRA,CAPRA,CAPRA,CAPRA,CAPRA,CAPRA!',
-              status: 'received'
+              status: 'received',
+              drop: false
             },
             {
               date: '10/01/2020',
               hours: '16:15',
               text: 'ops',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             }
           ],
         },
@@ -127,19 +141,22 @@ function initVue() {
               date: '20/03/2020',
               hours: '16:30',
               text: 'Hai preso tutto per stasera? Dai che dobbiamo preparare',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '20/03/2020',
               hours: '16:30',
               text: "Sisi ho trovato le gelatineeee.. C'è cioccolato e menta piperita. E c'è anche spinaci, fegato e trippa. George giura che ne ha trovata una al gusto di caccole!",
-              status: 'received'
+              status: 'received',
+              drop: false
             },
             {
               date: '20/03/2020',
               hours: '16:35',
               text: 'Bleah, quella roba piace solo a te',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             }
           ],
         },
@@ -152,25 +169,29 @@ function initVue() {
               date: '28/03/2020',
               hours: '10:10',
               text: 'MONELLA!',
-              status: 'received'
+              status: 'received',
+              drop: false
             },
             {
               date: '28/03/2020',
               hours: '10:20',
               text: 'Hai sbagliato chat ancora......',
-              status: 'sent'
+              status: 'sent',
+              drop: false
             },
             {
               date: '28/03/2020',
               hours: ' 16:18',
               text: 'Ah scusa!',
-              status: 'received'
+              status: 'received',
+              drop: false
             },
             {
               date: '28/03/2020',
               hours: '16:18',
               text: 'MONELLO!',
-              status: 'received'
+              status: 'received',
+              drop: false
             }
           ],
         },
@@ -178,8 +199,10 @@ function initVue() {
       current: 0,
       val: "",
       showChat: false,
-      search:""
+      search:"",
+      night: false,
     },
+
 
     methods: {
       // FUNZIONE PER PRENDERE L'ELEMENTO DEL CONTATTO CLICCATO IN CONTACTS
@@ -232,6 +255,19 @@ function initVue() {
            currentmsg.push(answer);
          },1000);
        },
+       // FUNZIONE PER LA NIGHT MODE
+       nightMode: function() {
+         this.night = !this.night;
+       },
+
+       // DROP TABLE
+       dropTable: function(elem) {
+         elem.drop = !elem.drop;
+
+         console.log(elem);
+       },
+
+
        // FUNZIONE PER CANCELLARE IL MESSAGGIO SELEZIONATO
        deleteMsg: function(indice) {
          this.current.messages.splice(indice,1)
